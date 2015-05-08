@@ -1,0 +1,51 @@
+<h1> Welcome to Heads UP System</h1>
+
+
+<form action="http://www.fincher.org/SimpleFormActio method="get" >
+
+
+<fieldset style="margin: 1em; text-align: center;">
+<legend>Select your question type</legend>
+<input type="radio" name="hero"  value="Freetext" onclick="displayHero(this)" /> Free Text
+<input type="radio" name="hero"  value="MultipleQuestion" onclick="displayHero(this)" /> Multiple Question
+<input type="radio" name="hero"  value="Oneword" onclick="displayHero(this)" /> One word
+<div style="height: 1em;" />
+</fieldset>
+<br/>
+
+
+<table style="width:100%">
+  <tr>
+    <td><label> Hello teacher, Please type your question here: </label><br/>
+	Question: <input type="text" name="question" value="" size="15" maxlength="50" />
+     </td>
+    <td>
+	<label> Hello teacher, Please type your answer here: </label><br/>
+         Answer: <input type="text" name="answer" value="" size="15" maxlength="50" />
+	</textarea>
+    </td> 
+  </tr>
+  <tr>
+  <td>
+  <input type="submit" name="submitbutton" value="submit Question" />
+  </td>
+  <td>
+  <input type="submit" name="submitAnswer" value="Submit Answer" />
+  </td>
+  </tr>
+</table>
+
+
+<br/>
+
+
+<fieldset style="margin: 1em; text-align: center;">
+<legend>The student list</legend>
+<input type="radio" name="title" value="mr" />Student 1<br />
+<input type="radio" name="title" value="ms" />student 2<br />
+<input type="radio" name="title" value="decline" checked="checked" /> student 3<br />
+<div style="height: 1em;" />
+</fieldset>
+<br/>
+
+</form>
