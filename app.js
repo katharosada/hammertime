@@ -31,27 +31,25 @@ usersRef.set({
 
 */
     $scope.answer="";
-$scope.submit = function(id) {
+    $scope.submit = function(id) {
 
-	 AmyTest.set({
-  0: {
-    question: "What is your favourite colour",
-    right_answer: "Green",
-    answers:{},
-    open:true,
-    type:"text"
-  },
-  1: {
-    question: "What is your favourite Flavour",
-    right_answer: "Green",
-    answers:{},
-    open:true,
-    type:"text"
-  }
-});
-}
-
-
+      AmyTest.set({
+		  0: {
+			question: "What is your favourite colour",
+			right_answer: "Green",
+			answers:{},
+			open:true,
+			type:"text"
+		  },
+		  1: {
+			question: "What is your favourite Flavour",
+			right_answer: "Green",
+			answers:{},
+			open:true,
+			type:"text"
+		  }
+	  });
+	}
   }
 ]);
 
