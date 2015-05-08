@@ -23,16 +23,17 @@
     <h1>Student view</h1>
 
     <ul id="example-messages" class="example-chat-messages">
-      <li ng-repeat="question in questions" ng-if="question.open">
+      <li ng-repeat="question in questions" ng-if="question.open && answer[question.$id].submitted!='true'">
+      {{answer[question.$id].submitted}}
         <strong class="example-chat-username">{{ question.question }}</strong>
         
          <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
             <li ng-repeat="answer in question.answers">
-              <input type="radio" ng-model="answer"><label>{{answer.answer}}</label>
+              <input type="radio" ng-model="answer[question.$id]"><label>{{answer.answer}}</label>
             </li>
          </ul>
-         <textarea ng-if="question.type=='textarea'" ng-model="answer"></textarea>
-         <input type="text" ng-if="question.type=='text'" ng-model="answer" />
+         <textarea ng-if="question.type=='textarea'" ng-model="answer[question.$id]"></textarea>
+         <input type="text" ng-if="question.type=='text'" ng-model="answer[question.$id]" />
          {{answer}}
          <button ng-click="submit(question.$id)">Go!</button>
       </li>
