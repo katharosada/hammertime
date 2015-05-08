@@ -8,47 +8,14 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",
     var students = new Firebase("https://flickering-fire-2155.firebaseio.com/students");
     $scope.students = $firebaseArray(students);
     var questions = new Firebase("https://flickering-fire-2155.firebaseio.com/questions");
-    $scope.questions = $firebaseArray(questions);
+	$scope.questions = $firebaseArray(questions);
+	
+	var studentID = 2;
 
-    var AmyTest = new Firebase("https://flickering-fire-2155.firebaseio.com/AmyTest");
-    console.log(AmyTest);
-    $scope.AmyTest = $firebaseArray(AmyTest);
-
-
-/*
-
-var usersRef = ref.child("users");
-usersRef.set({
-  alanisawesome: {
-    date_of_birth: "June 23, 1912",
-    full_name: "Alan Turing"
-  },
-  gracehop: {
-    date_of_birth: "December 9, 1906",
-    full_name: "Grace Hopper"
-  }
-});
-
-*/
-    $scope.answer="";
+	$scope.answer={};
     $scope.submit = function(id) {
-
-      AmyTest.set({
-		  0: {
-			question: "What is your favourite colour",
-			right_answer: "Green",
-			answers:{},
-			open:true,
-			type:"text"
-		  },
-		  1: {
-			question: "What is your favourite Flavour",
-			right_answer: "Green",
-			answers:{},
-			open:true,
-			type:"text"
-		  }
-	  });
+	  var answers = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + id + "/answers");
+	  answers.push({'student_id': studentID, 'answer':$scope.answer});
 	}
   }
 ]);
