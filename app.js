@@ -15,7 +15,8 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",
 	$scope.answer={};
     $scope.submit = function(id) {
 	  var answers = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + id + "/answers");
-	  answers.push({'student_id': studentID, 'answer':$scope.answer});
+	 // answers.push({'student_id': studentID, 'answer':$scope.answer[id]});
+	  $scope.answer[id].submitted=true;
 	}
   }
 ]);
