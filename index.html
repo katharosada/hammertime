@@ -24,11 +24,12 @@
       <li ng-repeat="question in questions">
         <strong class="example-chat-username">{{ question.question }}</strong>
         
-         <ul id="example-messages" class="example-chat-messages">
+         <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
             <li ng-repeat="answer in question.answers">
               <input type="radio" name="title" value="mr" /> <label ng-bind ="answer.answer" ></label>
             </li>
          </ul>
+         <textarea ng-if="question.type=='textarea'" ng-model=""></textarea>
       </li>
     </ul>
   </body>
