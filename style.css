@@ -80,3 +80,17 @@ body.student {
 	display:block;
 	height:auto;
 }
+
+#questionlist li button + div {
+  background-color: #eee;
+  padding: 20px 0px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.progress {
+	  height: 20px!important;
+}
+.progress .progress-bar {
+  font-size: 14px;
+  line-height: 20px;
+}
