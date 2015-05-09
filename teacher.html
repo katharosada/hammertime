@@ -70,7 +70,7 @@
                   aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%" ng-class="{'progress-bar-danger':get_CorrectAnswers()<50, 'progress-bar-success':get_CorrectAnswers()>50}">{{ get_CorrectAnswers() }}%
                   </div>
               </div>
-              <ul>
+              <ul id="student-list">
                 <li ng-repeat="(key, value) in students" ng-class="{'responded':get_answer(key)!= 'No answer','wrongAnswer':((questions[get_viewquestion()].correct_answer != get_answer(key)) && (get_answer(key) != 'No answer')) && questions[get_viewquestion()].correct_answer != ''}">
                   {{ value }} - {{ get_answer(key) }}
                   
