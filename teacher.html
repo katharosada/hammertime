@@ -57,7 +57,7 @@
                  </div>
               </div>
             <ul ng-repeat="student in students">
-              <li> {{ student.$value }} - {{ get_answer($index) }} </li>
+              <li ng-class="{'responded':get_answer($index)!= 'No answer'}"> {{ student.$value }} - {{ get_answer($index) }} </li>
             </ul>
             
 
