@@ -71,7 +71,7 @@
                   </div>
               </div>
               <ul>
-                <li ng-repeat="(key, value) in students" ng-class="{'responded':get_answer(key)!= 'No answer','wrongAnswer':(questions[get_viewquestion()].correct_answer != get_answer(key)) && (get_answer(key) != 'No answer')}">
+                <li ng-repeat="(key, value) in students" ng-class="{'responded':get_answer(key)!= 'No answer','wrongAnswer':((questions[get_viewquestion()].correct_answer != get_answer(key)) && (get_answer(key) != 'No answer')) && questions[get_viewquestion()].correct_answer != ''}">
                   {{ value }} - {{ get_answer(key) }}
                   
                 </li>
