@@ -141,3 +141,12 @@ h1 img {
 .teacherPage input {
 	 min-width: 400px;
 }
+.individualQuestion {
+  background-color: #3498db;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 18px;
+  border-radius:5px;
+}
