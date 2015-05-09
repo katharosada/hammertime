@@ -12,25 +12,40 @@
   <body ng-controller="TeacherController">
     <h1>Heads Up!</h1>
 
-    <ul id="example-messages" class="example-chat-messages">
-      <li ng-repeat="(key, question) in questions">
-      <button ng-click="set_current_question(key)">{{ question.question }}</button>
-        <div ng-if="current_question !== null && key === current_question">
-        Question: <input type="text" name="question" value="{{ questions[current_question].question }}" size="15" maxlength="50" /></br>
-        Answer: <input type="text" name="answer" value="{{ questions[current_question].correct_answer }}" size="15" maxlength="50" />
-        <button ng-click="open_question(current_question)" class="btn btn-primary">Open</button>
-        </div>
-      </li>
-    </ul>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <!--Sidebar content-->
+        <ul id="example-messages" class="example-chat-messages">
+          <li ng-repeat="(key, question) in questions">
+            <button ng-click="set_current_question(key)">{{ question.question }}</button>
+            <div ng-if="current_question !== null && key === current_question">
+            Question: <input type="text" name="question" value="{{ questions[current_question].question }}" size="15" maxlength="50" /></br>
+            Answer: <input type="text" name="answer" value="{{ questions[current_question].correct_answer }}" size="15" maxlength="50" />
+              <div ng-if="current_question !== null && !questions[current_question].open">
+              <button class="btn btn-success" ng-click="open_question(current_question)" class="btn btn-primary">Open</button>
+              </div>
+              <div ng-if="current_question != null && questions[current_question].open">
+              <button class="btn btn-danger" ng-click="close_question(current_question)" class="btn btn-primary">close</button>
+              </div>
+            </div>
+          </li>
+        </ul>
 
-
-
-    <div ng-if="current_question != null && questions[current_question].open">
+    </div>
+    <div class="span10">
+      <!--Body content-->
       <ul ng-repeat="student in students">
         <li> {{ student.$value }} - {{ get_answer($index) }} </li>
       </ul>
-	<button ng-click="close_question(current_question)" class="btn btn-primary">close</button>
+      </div>
     </div>
+  </div>
+
+
+
+
+
 
 <!--
     <INPUT TYPE="button" onClick="history.go(0)" VALUE="Refresh"> 
