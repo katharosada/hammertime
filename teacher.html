@@ -19,14 +19,14 @@
         <ul id="example-messages" class="example-chat-messages">
           <li ng-repeat="(key, question) in questions">
             <button ng-click="set_current_question(key)">{{ question.question }}</button>
-            <div ng-if="current_question !== null && key === current_question">
-            Question: <input type="text" name="question" value="{{ questions[current_question].question }}" size="15" maxlength="50" /></br>
-            Answer: <input type="text" name="answer" value="{{ questions[current_question].correct_answer }}" size="15" maxlength="50" />
-              <div ng-if="current_question !== null && !questions[current_question].open">
-              <button class="btn btn-success" ng-click="open_question(current_question)" class="btn btn-primary">Open</button>
+            <div ng-if="current_question !== null && key === current_question || question.open">
+            Question: <input type="text" name="question" value="{{ question.question }}" size="15" maxlength="50" /></br>
+            Answer: <input type="text" name="answer" value="{{ question.correct_answer }}" size="15" maxlength="50" />
+              <div ng-if="!question.open">
+              <button class="btn btn-success" ng-click="open_question(key)" class="btn btn-primary">Open</button>
               </div>
-              <div ng-if="current_question != null && questions[current_question].open">
-              <button class="btn btn-danger" ng-click="close_question(current_question)" class="btn btn-primary">close</button>
+              <div ng-if="question.open">
+              <button class="btn btn-danger" ng-click="close_question(key)" class="btn btn-primary">close</button>
               </div>
             </div>
           </li>
