@@ -23,7 +23,7 @@
     	<h1><img src="resources/wordlogo3x.png"/></h1>
         <div class="nameMe" ng-show="!student.id">
             <label for="name">Who are you? (First and Last name,  please)</label>
-            <input type="text" ng-model="student.name" name="name" id="name" class="form-control" required />
+            <input ng-enter="nameMe()" type="text" ng-model="student.name" name="name" id="name" class="form-control" required />
             <button ng-click="nameMe()" class="btn btn-success">Start!</button>
         </div>
         <div class="questions" ng-show="student.id">
@@ -31,7 +31,7 @@
               <li ng-repeat="question in questions track by $index" ng-show="question.open && answers[question.$id].submitted!=true" class="btn btn-warning">
                 <strong class="example-chat-username" ng-bind="question.question"></strong>
                  <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
-                 <input type="text" ng-if="question.type=='text'" ng-model="answers[question.$id]" class="form-control" required />
+                 <input type="text" ng-enter="submit(question.$id)" ng-if="question.type=='text'" ng-model="answers[question.$id]" class="form-control" required />
                  <button ng-click="submit(question.$id)" class="btn btn-danger">Go!</button>
               </li>
             </ul>
