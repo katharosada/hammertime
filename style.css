@@ -28,7 +28,6 @@ li {
 }
 
 
-
 body.student {
 	display: table;
   width: 100%;
@@ -98,4 +97,7 @@ body.student {
 }
 .responded {
 	color:#18bc9c;
+}
+.wrongAnswer {
+  color: #F00;
 }
