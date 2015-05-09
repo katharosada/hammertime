@@ -126,3 +126,6 @@ h1 img {
 .student input {
   margin: 20px 0px;
 }
+.questionHolder label {
+  min-width: 100px;
+}
