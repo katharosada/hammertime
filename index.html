@@ -2,11 +2,13 @@
 <html ng-app="hammertime">
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
     <script src="app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     ul li {
       list-style: none;
@@ -14,38 +16,39 @@
     </style>
   </head>
   <body ng-controller="MyController">
-    <h1>Student view</h1>
-    <div class="nameMe" ng-if="!student.id">
-	    <label for="name">Who are you? (Firstname and Surname please)</label>
-		<input type="text" ng-model="student.name" name="name" id="name" />
-        <button ng-click="nameMe()">Start!</button>
-    </div>
-    <div class="questions" ng-if="student.id">
-        <ul id="example-messages" class="example-chat-messages">
-          <li ng-repeat="question in questions track by $index" ng-if="question.open && answers[question.$id].submitted!=true">
-            <strong class="example-chat-username" ng-bind="question.question"></strong>
-             <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
-             <input type="text" ng-if="question.type=='text'" ng-model="answers[question.$id]" />
-             {{answer}}
-             <button ng-click="submit(question.$id)">Go!</button>
-          </li>
-        </ul>
-        <!--View my answers
-         <ul id="example-messages" class="example-chat-messages">
-          <li ng-repeat="ans in answers" ng-if="question.open && answer[question.$id].submitted!=true">
-            <strong class="example-chat-username"></strong>
-            
-             <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
-                <li ng-repeat="answer in question.answers">
-                  <input type="radio" ng-model="answer[question.$id]"><label>{{answer.answer}}</label>
-                </li>
-             </ul>
-             <textarea ng-if="question.type=='textarea'" ng-model="answer[question.$id]"></textarea>
-             <input type="text" ng-if="question.type=='text'" ng-model="answer[question.$id]" />
-             {{answer}}
-             <button ng-click="submit(question.$id)">Go!</button>
-          </li>
-        </ul>-->
+    <div class="container">
+    	<h1>Heads up</h1>
+        <div class="nameMe" ng-if="!student.id">
+            <label for="name">Who are you? (Firstname and Surname please)</label>
+            <input type="text" ng-model="student.name" name="name" id="name" class="form-control" />
+            <button ng-click="nameMe()" class="btn btn-success">Start!</button>
+        </div>
+        <div class="questions" ng-if="student.id">
+            <ul id="example-messages" class="example-chat-messages">
+              <li ng-repeat="question in questions track by $index" ng-if="question.open && answers[question.$id].submitted!=true">
+                <strong class="example-chat-username" ng-bind="question.question"></strong>
+                 <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
+                 <input type="text" ng-if="question.type=='text'" ng-model="answers[question.$id]" class="form-control" />
+                 <button ng-click="submit(question.$id)" class="btn btn-success">Go!</button>
+              </li>
+            </ul>
+            <!--View my answers
+             <ul id="example-messages" class="example-chat-messages">
+              <li ng-repeat="ans in answers" ng-if="question.open && answer[question.$id].submitted!=true">
+                <strong class="example-chat-username"></strong>
+                
+                 <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
+                    <li ng-repeat="answer in question.answers">
+                      <input type="radio" ng-model="answer[question.$id]"><label>{{answer.answer}}</label>
+                    </li>
+                 </ul>
+                 <textarea ng-if="question.type=='textarea'" ng-model="answer[question.$id]"></textarea>
+                 <input type="text" ng-if="question.type=='text'" ng-model="answer[question.$id]" />
+                 {{answer}}
+                 <button ng-click="submit(question.$id)">Go!</button>
+              </li>
+            </ul>-->
+        </div>
     </div>
   </body>
 </html>
