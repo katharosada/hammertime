@@ -20,20 +20,22 @@
         <div class="col-md-6">
           <!--Sidebar content-->
           <ul id="questionlist">
-            <li ng-repeat="(key, question) in questions">
-
-              <button class="btn questionbtn" ng-click="set_current_question(key)" ng-class="{'btn-primary':question.open, 'btn-info':!question.open, 'btn-success':answerComplete}">{{ question.question }}</button>
+            <li>
+              <button id="newquestion" class="btn btn-danger" ng-click="new_question()">New Question</button>
+            </li>
+            <li ng-repeat="question in questions | orderQuestionBy ">
+              <button class="btn questionbtn" ng-click="set_current_question(question.key)" ng-class="{'btn-primary':question.open, 'btn-info':!question.open, 'btn-success':answerComplete}">{{ question.question }}</button>
  
-              <div ng-if="current_question !== null && key === current_question || question.open">
+              <div ng-if="current_question !== null && question.key === current_question || question.open">
               Question: <input type="text" name="question" ng-model="question.question" size="15" maxlength="50" /></br>
               Answer: <input type="text" name="answer" ng-model="question.correct_answer" size="15" maxlength="50" />
                 <div ng-if="!question.open && get_openquestion() === null">
-                  <button class="btn btn-success" ng-click="open_question(key)" class="btn btn-primary">
+                  <button class="btn btn-success" ng-click="open_question(question.key)" class="btn btn-primary">
                     Open
                   </button>
                 </div>
                 <div ng-if="question.open">
-                  <button class="btn btn-danger" ng-click="close_question(key)" class="btn btn-primary">
+                  <button class="btn btn-danger" ng-click="close_question(question.key)" class="btn btn-primary">
                     close
                   </button>
                 </div>

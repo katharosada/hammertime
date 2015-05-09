@@ -1,7 +1,8 @@
 myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseArray",
   function($scope, $firebaseObject, $firebaseArray) {
-    var ref = new Firebase("https://ygbcnjyw3s8.firebaseio-demo.com/");
-    $scope.messages = $firebaseArray(ref);
+    var ref = new Firebase("https://flickering-fire-2155.firebaseio.com/extra");
+    $scope.extra_obj = $firebaseObject(ref);
+    $scope.extra_obj.$bindTo($scope, "extra");
     var students = new Firebase("https://flickering-fire-2155.firebaseio.com/students");
     $scope.students = $firebaseObject(students);
     var questions = new Firebase("https://flickering-fire-2155.firebaseio.com/questions");
@@ -13,6 +14,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     $scope.current_question = null;
 
     $scope.set_current_question = function(key) {
+      console.log(key);
       if (key === $scope.current_question) {
         $scope.current_question = null;
         return;
@@ -20,7 +22,19 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       $scope.current_question = key;
     };
 
-
+    $scope.new_question = function() {
+      var max = $scope.extra.question_max;
+      $scope.extra.question_max += 1;
+      var question = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + max);
+      question.set({
+        "question": "NEW",
+        "correct_answer": "",
+        "open": false,
+        "type": "text"
+      });
+      $scope.current_question = '' + max;
+      console.log(max);
+    };
 
     $scope.close_all_question = function() {
       $scope.current_question = null;
@@ -166,3 +180,24 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
 
   }
 ]);
+
+myApp.filter('orderQuestionBy', function(){
+  return function(input) {
+    if (!angular.isObject(input)) return input;
+
+    var array = [];
+    for(var objectKey in input) {
+        if (input[objectKey] !== null && input[objectKey].question) {
+          input[objectKey].key = objectKey;
+          array.push(input[objectKey]);
+        }
+    }
+
+    array.sort(function(a, b){
+        a = parseInt(a.key);
+        b = parseInt(b.key);
+        return b - a;
+    });
+    return array;
+  };
+});
