@@ -47,13 +47,13 @@
               <label> Correct Answers </label></br>
               <div class="progress">
                   <div class="progress-bar progress-bar-striped active" role="progressbar"
-                  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%">{{ get_CorrectAnswers() }}%
+                  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%" ng-class="{'progress-bar-danger':get_CorrectAnswers()<50, 'progress-bar-success':get_CorrectAnswers()>50}">{{ get_CorrectAnswers() }}%
                   </div>
               </div>
               <label> All Answers  </label></br>
               <div class="progress">
                  <div class="progress-bar progress-bar-striped active" role="progressbar"
-                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_AllAnswers()}}%">{{ get_AllAnswers() }}% 
+                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_AllAnswers()}}%" ng-class="{'progress-bar-danger':get_AllAnswers()<25,'progress-bar-warning':get_AllAnswers()<75, 'progress-bar-success':get_AllAnswers()==100}">{{ get_AllAnswers() }}% 
                  </div>
               </div>
             <ul ng-repeat="student in students">
