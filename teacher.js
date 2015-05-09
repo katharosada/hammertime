@@ -9,8 +9,11 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
     $scope.current_question = null;
 
     $scope.set_current_question = function(key) {
+      if (key === $scope.current_question) {
+        $scope.current_question = null;
+        return;
+      }
       $scope.current_question = key;
-      console.log(key);
     };
 
 
