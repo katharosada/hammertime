@@ -16,80 +16,44 @@
       <div class="row-fluid">
         <div class="col-md-8">
           <!--Sidebar content-->
-        <ul id="example-messages" class="example-chat-messages">
-          <li ng-repeat="(key, question) in questions">
-            <button ng-click="set_current_question(key)" class="btn" ng-class="{'btn-success':question.open, 'btn-danger':!question.open}">{{ question.question }}</button>
-            <div ng-if="current_question !== null && key === current_question || question.open">
-            Question: <input type="text" name="question" value="{{ question.question }}" size="15" maxlength="50" /></br>
-            Answer: <input type="text" name="answer" value="{{ question.correct_answer }}" size="15" maxlength="50" />
-              <div ng-if="!question.open">
-              <button class="btn btn-success" ng-click="open_question(key)" class="btn btn-primary">Open</button>
+          <ul id="example-messages" class="example-chat-messages">
+            <li ng-repeat="(key, question) in questions">
+              <button ng-click="set_current_question(key)" class="btn" ng-class="{'btn-success':question.open, 'btn-danger':!question.open}">{{ question.question }}</button>
+              <div ng-if="current_question !== null && key === current_question || question.open">
+              Question: <input type="text" name="question" value="{{ question.question }}" size="15" maxlength="50" /></br>
+              Answer: <input type="text" name="answer" value="{{ question.correct_answer }}" size="15" maxlength="50" />
+                <div ng-if="!question.open">
+                  <button class="btn btn-success" ng-click="open_question(key)" class="btn btn-primary">
+                    Open
+                  </button>
+                </div>
+                <div ng-if="question.open">
+                  <button class="btn btn-danger" ng-click="close_question(key)" class="btn btn-primary">
+                    close
+                  </button>
+                </div>
               </div>
-              <div ng-if="question.open">
-              <button class="btn btn-danger" ng-click="close_question(key)" class="btn btn-primary">close</button>
-              </div>
-            </div>
-          </li>
-        </ul>
-
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+<<<<<<< HEAD
     <div class="col-md-4">
       <!--Body content-->
       <ul ng-repeat="student in students">
         <li> {{ student.$value }} - {{ get_answer($index) }} </li>
       </ul>
+=======
+    <div class="span10">
+      <div ng-if="current_question !== null">
+        <!--Body content-->
+        <ul ng-repeat="student in students">
+          <li> {{ student.$value }} - {{ get_answer($index) }} </li>
+        </ul>
+>>>>>>> 2ae122bf3ce14a49f32ee358dd46fe6637bc4a38
       </div>
     </div>
   </div>
-
-
-
-
-
-
-<!--
-<form action="http://www.fincher.org/SimpleFormActio" method="get" >
-<fieldset style="margin: 1em; text-align: center;">
-<legend>Select your question type</legend>
-<input type="radio" name="hero"  value="Freetext" onclick="displayHero(this)" /> Free Text
-<input type="radio" name="hero"  value="MultipleQuestion" onclick="displayHero(this)" /> Multiple Question
-<input type="radio" name="hero"  value="Oneword" onclick="displayHero(this)" /> One word
-<div style="height: 1em;" />
-</fieldset>
-<br/>
-
-<table style="width:100%">
-  <tr>
-    <td><label> Hello teacher, Please type your question here: </label><br/>
-	Question: <input type="text" name="question" value="" size="15" maxlength="50" />
-     </td>
-    <td>
-	<label> Hello teacher, Please type your answer here: </label><br/>
-         Answer: <input type="text" name="answer" value="" size="15" maxlength="50" />
-    </td> 
-  </tr>
-  <tr>
-  <td>
-  <input type="submit" name="submitbutton" value="submit Question" />
-  </td>
-  <td>
-  <input type="submit" name="submitAnswer" value="Submit Answer" />
-  </td>
-  </tr>
-</table>
-<br/>
-
-
-<fieldset style="margin: 1em; text-align: center;">
-<legend>The student list</legend>
-<input type="radio" name="title" value="mr" />Student 1<br />
-<input type="radio" name="title" value="ms" />student 2<br />
-<input type="radio" name="title" value="decline" checked="checked" /> student 3<br />
-<div style="height: 1em;" />
-</fieldset>
-<br/>
-
-</form>
--->
   </body>
 </html>
