@@ -56,9 +56,9 @@
                   aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%" ng-class="{'progress-bar-danger':get_CorrectAnswers()<50, 'progress-bar-success':get_CorrectAnswers()>50}">{{ get_CorrectAnswers() }}%
                   </div>
               </div>
-              <ul ng-repeat="student in students">
-                <li ng-class="{'responded':get_answer($index)!= 'No answer'}">
-                  {{ student.$value }} - {{ get_answer($index) }}
+              <ul ng-repeat="(key, student) in students">
+                <li ng-class="{'responded':get_answer(key) != 'No answer'}">
+                  {{ student }} - {{ get_answer(key) }}
                 </li>
               </ul>
             </div>
