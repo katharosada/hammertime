@@ -48,7 +48,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       for (var key in answers) {
         if (answers.hasOwnProperty(key)) {
           console.log(answers[key]);
-          if (answers[key].student_id === student_id) {
+          if (answers[key].student_id == student_id) {
             return answers[key].answer;
           }
         }
