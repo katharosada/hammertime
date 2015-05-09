@@ -90,26 +90,26 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       if (!$scope.questions[openKey]) {
         return 0;
       }
-      var correctAnswer = $scope.questions[openKey].correct_answer; 
+      var correctAnswer = $scope.questions[openKey].correct_answer;
       var answers = $scope.questions[openKey].answers;
-      var correctAnsNo = 0; 
+      var correctAnsNo = 0;
       var allAnswers = 0;
       for (var key in answers) {
-         if (answers.hasOwnProperty(key)) {
-            if ($.inArray(answers[key].student_id, arr) == -1){           
-                 arr.push(answers[key].student_id);
-                 allAnswers ++;
-             
-	        if (answers[key].answer == correctAnswer){
-    	           correctAnsNo ++;
-                }
+        if (answers.hasOwnProperty(key) && answers[key].student_id) {
+          if ($.inArray(answers[key].student_id, arr) == -1) {
+             arr.push(answers[key].student_id);
+             allAnswers ++;
+             if (answers[key].answer == correctAnswer) {
+                correctAnsNo ++;
              }
-          }
+           }
+        }
       }
-      if (allAnswers != 0) 
+      if (allAnswers !== 0) {
         return Math.ceil((100 * correctAnsNo) / allAnswers);
-      else
-       return 0; 
+      } else {
+       return 0;
+      }
 
     };
 
@@ -124,24 +124,24 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       var answers = $scope.questions[openKey].answers;
       var students = $scope.students;
       var allAnswers = 0;
-      var studnetNo = 0;
-      for (var key in answers) {  
-        if (answers.hasOwnProperty(key)) {
-            if ($.inArray(answers[key].student_id, arrI) == -1){           
+      var studentNo = 0;
+      for (var key in answers) {
+        if (answers.hasOwnProperty(key) && answers[key].student_id) {
+            if ($.inArray(answers[key].student_id, arrI) == -1){
                  arrI.push(answers[key].student_id);
                  allAnswers ++;
             }
          }
       }
       for (var stud in students) {
-         if (students.hasOwnProperty(stud)){
-             studnetNo ++;
-         }
+        if (students.hasOwnProperty(stud) && typeof students[stud] == 'string' && students[stud] !== "students"){
+          studentNo ++;
+        }
       }
-      if (studnetNo != 0) 
-        return Math.ceil((100 * allAnswers) / studnetNo);
+      if (studentNo !== 0)
+        return Math.ceil((100 * allAnswers) / studentNo);
       else
-       return 0; 
+       return 0;
    };
 
    $scope.get_AnswersForQuestion = function(question_id) {
@@ -152,21 +152,22 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       var answers = $scope.questions[question_id].answers;
       var students = $scope.students;
       var allAnswers = 0;
-      var studnetNo = 0;
-      for (var key in answers) {  
-        if (answers.hasOwnProperty(key)) {  
+      var studentNo = 0;
+      for (var key in answers) {
+        if (answers.hasOwnProperty(key)) {
           allAnswers ++;
          }
       }
       for (var stud in students) {
          if (students.hasOwnProperty(stud)){
-             studnetNo ++;
+             studentNo ++;
          }
       }
-      if (studnetNo != 0) 
-        return Math.ceil((100 * allAnswers) / studnetNo);
-      else
-       return 0; 
+      if (studentNo != 0) {
+        return Math.ceil((100 * allAnswers) / studentNo);
+      } else {
+        return 0;
+      }
    };
 
 
