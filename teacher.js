@@ -69,20 +69,26 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
     };
 
 
-    $scope.get_percentage = function() {
- 
-      var open = $scope.get_openquestion();
-
+    $scope.get_CorrectAnswers = function() {
+      var openKey = $scope.get_openquestion();
+      var correctAnswer = $scope.questions[openKey].correct_answer; 
+      var answers = $scope.questions[openKey].answers;
+      var correctAnsNo = 0; 
+      var allAnswers = 0;
       for (var key in answers) {
-        if (answers.hasOwnProperty(key)) {
-          console.log(answers[key]);
-          if (answers[key].student_id === student_id) {
-            return answers[key].answer;
-          }
+        allAnswers ++;
+	if (answers[key].answer == correctAnswer){
+    	  correctAnsNo ++;
         }
       }
-      return "No answer";
+      if (allAnswers != 0) 
+        return (100 * correctAnsNo) / allAnswers;
+      else
+       return 0; 
+
     };
+
+
 
   }
 ]);
