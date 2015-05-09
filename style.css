@@ -57,10 +57,26 @@ body.student {
 }
 .student li {
   list-style: none;
-  padding: 10px 0px;
+   padding: 30px;
 }
-
 .student ul {  
 	-webkit-margin-before: 0em;
 	padding-left: 0px;
+}
+.student li {
+    transition: 0.5s linear all;
+    opacity: 1;
+	
+}
+.student li.ng-hide, .ng-hide:not(.ng-hide-animate) {
+  opacity: 0;
+  height: 0;
+  max-height: 0px;
+
+}
+.student li.ng-show {
+    opacity: 1;
+	max-height:999px;
+	display:block;
+	height:auto;
 }

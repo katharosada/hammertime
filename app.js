@@ -35,6 +35,7 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
       }
 	}
 	
+	
 	$scope.answers={};
     $scope.submit = function(id) {
 		if($scope.answers[id]) {
