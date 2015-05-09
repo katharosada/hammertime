@@ -16,11 +16,13 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
 
 	$scope.student = {};
 	$scope.nameMe = function () {
-	 findId();
-	 if($scope.student.id == null) {
-	 	students.push($scope.student.name);
-		$timeout(findId,2000);
-	  }
+		if($scope.student.name){
+			 findId();
+			 if($scope.student.id == null) {
+				students.push($scope.student.name);
+				$timeout(findId,2000);
+			  }
+		}
 	}
 	function findId() {
 		for (var key in $scope.students) {
@@ -35,9 +37,11 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
 	
 	$scope.answers={};
     $scope.submit = function(id) {
-	  var answers = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + id + "/answers");
-	  $scope.answers[id] = {'answer':$scope.answers[id], 'submitted':true};
-	  answers.push({'student_id': $scope.student.id, 'answer':$scope.answers[id].answer});
+		if($scope.answers[id]) {
+			var answers = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + id + "/answers");
+			  $scope.answers[id] = {'answer':$scope.answers[id], 'submitted':true};
+			  answers.push({'student_id': $scope.student.id, 'answer':$scope.answers[id].answer});
+		}
 	//  $scope.answer[id].submitted=true;
 	}
   }
