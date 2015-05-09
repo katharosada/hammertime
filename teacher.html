@@ -14,7 +14,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span2">
+        <div class="col-md-8">
           <!--Sidebar content-->
         <ul id="example-messages" class="example-chat-messages">
           <li ng-repeat="(key, question) in questions">
@@ -33,7 +33,7 @@
         </ul>
 
     </div>
-    <div class="span10">
+    <div class="col-md-4">
       <!--Body content-->
       <ul ng-repeat="student in students">
         <li> {{ student.$value }} - {{ get_answer($index) }} </li>
