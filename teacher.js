@@ -60,6 +60,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       for (var key in answers) {
         if (answers.hasOwnProperty(key) && answers[key] != null) {
           if (answers[key].student_id == student_id) {
+			  console.log(answers[key].answer);
             return answers[key].answer;
           }
         }
@@ -136,6 +137,33 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       else
        return 0; 
    };
+
+   $scope.get_AnswersForQuestion = function(question_id) {
+
+      if (!$scope.questions[question_id]) {
+        return 0;
+      }
+      var answers = $scope.questions[question_id].answers;
+      var students = $scope.students;
+      var allAnswers = 0;
+      var studnetNo = 0;
+      for (var key in answers) {  
+        if (answers.hasOwnProperty(key)) {  
+          allAnswers ++;
+         }
+      }
+      for (var stud in students) {
+         if (students.hasOwnProperty(stud)){
+             studnetNo ++;
+         }
+      }
+      if (studnetNo != 0) 
+        return Math.ceil((100 * allAnswers) / studnetNo);
+      else
+       return 0; 
+   };
+
+
 
 
 
