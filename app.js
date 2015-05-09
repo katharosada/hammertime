@@ -40,8 +40,25 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
     $scope.submit = function(id) {
 		if($scope.answers[id]) {
 			var answers = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + id + "/answers");
+			//tempAnswers = $firebaseArray(answers);
+			  
+			  
 			  $scope.answers[id] = {'answer':$scope.answers[id], 'submitted':true};
-			  answers.push({'student_id': $scope.student.id, 'answer':$scope.answers[id].answer});
+		
+			  for (var key in $scope.questions[id].answers) {
+					if ($scope.questions[id].answers.hasOwnProperty(key)) {
+					  if ($scope.questions[id].answers[key].student_id == $scope.student.id) {
+						//return answers[key].answer;
+						//$scope.student.id = $scope.students[key].$id;
+						if(console) console.log('inside!');
+						var inside = true;
+					  }
+					}
+      			}	
+			  if(!inside) {
+				  if(console)console.log('dopush');
+				  answers.push({'student_id': $scope.student.id, 'answer':$scope.answers[id].answer});
+			  }
 		}
 	//  $scope.answer[id].submitted=true;
 	}
