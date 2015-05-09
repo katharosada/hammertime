@@ -97,7 +97,18 @@ body.student {
 }
 .responded {
 	color:#18bc9c;
+	font-weight:bold;
 }
 .wrongAnswer {
   color: #F00;
+  font-weight:normal;
+}
+h1 img {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 40px;
+}
+.student input {
+  margin: 20px 0px;
 }

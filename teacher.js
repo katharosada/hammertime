@@ -46,6 +46,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       for (var key in answers) {
         if (answers.hasOwnProperty(key) && answers[key] != null) {
           if (answers[key].student_id == student_id) {
+			  console.log(answers[key].answer);
             return answers[key].answer;
           }
         }

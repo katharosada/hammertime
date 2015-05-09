@@ -13,7 +13,7 @@
   </head>
 
   <body ng-controller="TeacherController" >
-    <h1>Heads Up!</h1>
+    <h1><img src="resources/wordlogo3x.png"/></h1>
 
     <div class="container-fluid">
       <div class="row-fluid">
@@ -57,8 +57,9 @@
                   </div>
               </div>
               <ul>
-                <li ng-repeat="student in students" ng-class="{'responded':get_answer($index)!= 'No answer','wrongAnswer':(questions[get_viewquestion()].correct_answer != get_answer($index)) && (get_answer($index) != 'No answer')}">
-                  {{ student }} - {{ get_answer(key) }}
+                <li ng-repeat="(key, value) in students" ng-class="{'responded':get_answer(key)!= 'No answer','wrongAnswer':(questions[get_viewquestion()].correct_answer != get_answer(key)) && (get_answer(key) != 'No answer')}">
+                  {{ value }} - {{ get_answer(key) }}
+                  
                 </li>
               </ul>
             </div>
