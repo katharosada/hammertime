@@ -16,6 +16,14 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       $scope.current_question = key;
     };
 
+
+
+    $scope.close_all_question = function() {
+      $scope.current_question = null;
+      console.log(key);
+    };
+
+
     $scope.open_question = function(key) {
       //var question = $scope.questions[key].update({'open': true});
       var question = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + key);
@@ -24,6 +32,8 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       console.log($scope.questions[key]);
       console.log('called');
     };
+
+
 
 
     $scope.close_question = function(key) {
@@ -42,6 +52,31 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
         if (answers.hasOwnProperty(key)) {
           console.log(answers[key]);
           if (answers[key].student_id == student_id) {
+            return answers[key].answer;
+          }
+        }
+      }
+      return "No answer";
+    };
+
+
+    $scope.get_openquestion = function() {
+      var questions = $scope.questions;
+      for (var key in questions){
+          if (questions[key].open)
+            return key;		
+       }
+    };
+
+
+    $scope.get_percentage = function() {
+ 
+      var open = $scope.get_openquestion();
+
+      for (var key in answers) {
+        if (answers.hasOwnProperty(key)) {
+          console.log(answers[key]);
+          if (answers[key].student_id === student_id) {
             return answers[key].answer;
           }
         }
