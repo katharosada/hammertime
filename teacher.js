@@ -57,10 +57,12 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
     };
 
 
- $scope.get_openquestion = function() {
-      var questions = new Firebase("https://flickering-fire-2155.firebaseio.com/questions");
-      return questions;		
-
+    $scope.get_openquestion = function() {
+      var questions = $scope.questions;
+      for (var key in questions){
+          if (questions[key].open)
+            return key;		
+       }
     };
 
 
