@@ -150,7 +150,7 @@ h1 img {
   font-size: 22px;
   border-radius:5px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 
 input {
   margin-bottom: 20px;
