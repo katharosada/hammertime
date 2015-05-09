@@ -18,7 +18,6 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
 	$scope.nameMe = function () {
 	 findId();
 	 if($scope.student.id == null) {
-		 console.log('empty!');
 	 	students.push($scope.student.name);
 		$timeout(findId,2000);
 	  }
@@ -28,7 +27,6 @@ myApp.controller("MyController", ["$scope", "$firebaseArray",'$timeout',
 			if ($scope.students.hasOwnProperty(key)) {
 			  if ($scope.students[key].$value === $scope.student.name) {
 				//return answers[key].answer;
-				console.log('found!');
 				$scope.student.id = $scope.students[key].$id;
 			  }
 			}
