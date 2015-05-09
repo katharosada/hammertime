@@ -41,7 +41,7 @@
           </ul>
         </div>
         <div class="col-md-6">
-          <div ng-if="current_question !== null">
+          <div ng-if="get_openquestion() !== null || current_question !== null">
             <!--Body content-->
               <label> Correct Answers </label></br>
               <div class="progress">

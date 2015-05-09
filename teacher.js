@@ -41,7 +41,8 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     };
 
     $scope.get_answer = function(student_id) {
-      var answers = $scope.questions[$scope.current_question].answers;
+      var view_question = $scope.get_viewquestion();
+      var answers = $scope.questions[view_question].answers;
       for (var key in answers) {
         if (answers.hasOwnProperty(key) && answers[key] != null) {
           if (answers[key].student_id == student_id) {
@@ -52,6 +53,13 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       return "No answer";
     };
 
+    $scope.get_viewquestion = function() {
+      var open = $scope.get_openquestion();
+      if (open) {
+        return open;
+      }
+      return $scope.current_question;
+    };
 
     $scope.get_openquestion = function() {
       var questions = $scope.questions;
@@ -67,7 +75,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
 
 
     $scope.get_CorrectAnswers = function() {
-      var openKey = $scope.get_openquestion();
+      var openKey = $scope.get_viewquestion();
       if (!$scope.questions[openKey]) {
         return 0;
       }
@@ -91,7 +99,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     };
 
   $scope.get_AllAnswers = function() {
-      var openKey = $scope.get_openquestion();
+      var openKey = $scope.get_viewquestion();
       if (!$scope.questions[openKey]) {
         return 0;
       }
