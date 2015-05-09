@@ -28,7 +28,7 @@
         </div>
         <div class="questions" ng-show="student.id">
             <ul id="question" class="example-chat-messages">
-              <li ng-repeat="question in questions track by $index" ng-show="question.open && answers[question.$id].submitted!=true" class="btn btn-warning">
+              <li ng-repeat="question in questions track by $index" ng-show="question.open && answers[question.$id].submitted!=true" class="individualQuestion">
                 <strong class="example-chat-username" ng-bind="question.question"></strong>
                  <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
                  <input type="text" ng-enter="submit(question.$id)" ng-if="question.type=='text'" ng-model="answers[question.$id]" class="form-control" required />
