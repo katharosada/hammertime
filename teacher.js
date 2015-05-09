@@ -56,5 +56,28 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       return "No answer";
     };
 
+
+ $scope.get_openquestion = function() {
+      var questions = new Firebase("https://flickering-fire-2155.firebaseio.com/questions");
+      return questions;		
+
+    };
+
+
+    $scope.get_percentage = function() {
+ 
+      var open = $scope.get_openquestion();
+
+      for (var key in answers) {
+        if (answers.hasOwnProperty(key)) {
+          console.log(answers[key]);
+          if (answers[key].student_id === student_id) {
+            return answers[key].answer;
+          }
+        }
+      }
+      return "No answer";
+    };
+
   }
 ]);
