@@ -8,7 +8,6 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     //$scope.questions = $firebaseArray(questions);
 
     $scope.questions2 = $firebaseObject(questions);
-
     $scope.questions2.$bindTo($scope, "questions");
 
     $scope.current_question = null;
