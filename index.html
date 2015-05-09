@@ -14,29 +14,38 @@
     </style>
   </head>
   <body ng-controller="MyController">
-    <ul id="example-messages" class="example-chat-messages">
-      <li ng-repeat="student in students">
-        <strong class="example-chat-username">{{ student.$value }}</strong>
-      </li>
-    </ul>
-
     <h1>Student view</h1>
-
-    <ul id="example-messages" class="example-chat-messages">
-      <li ng-repeat="question in questions" ng-if="question.open && answer[question.$id].submitted!='true'">
-      {{answer[question.$id].submitted}}
-        <strong class="example-chat-username">{{ question.question }}</strong>
-        
-         <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
-            <li ng-repeat="answer in question.answers">
-              <input type="radio" ng-model="answer[question.$id]"><label>{{answer.answer}}</label>
-            </li>
-         </ul>
-         <textarea ng-if="question.type=='textarea'" ng-model="answer[question.$id]"></textarea>
-         <input type="text" ng-if="question.type=='text'" ng-model="answer[question.$id]" />
-         {{answer}}
-         <button ng-click="submit(question.$id)">Go!</button>
-      </li>
-    </ul>
+    <div class="nameMe" ng-if="!student.id">
+	    <label for="name">Who are you? (Firstname and Surname please)</label>
+		<input type="text" ng-model="student.name" name="name" id="name" />
+        <button ng-click="nameMe()">Start!</button>
+    </div>
+    <div class="questions" ng-if="student.id">
+        <ul id="example-messages" class="example-chat-messages">
+          <li ng-repeat="question in questions track by $index" ng-if="question.open && answers[question.$id].submitted!=true">
+            <strong class="example-chat-username" ng-bind="question.question"></strong>
+             <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
+             <input type="text" ng-if="question.type=='text'" ng-model="answers[question.$id]" />
+             {{answer}}
+             <button ng-click="submit(question.$id)">Go!</button>
+          </li>
+        </ul>
+        <!--View my answers
+         <ul id="example-messages" class="example-chat-messages">
+          <li ng-repeat="ans in answers" ng-if="question.open && answer[question.$id].submitted!=true">
+            <strong class="example-chat-username"></strong>
+            
+             <ul ng-if="question.type == 'radio'" id="example-messages" class="example-chat-messages">
+                <li ng-repeat="answer in question.answers">
+                  <input type="radio" ng-model="answer[question.$id]"><label>{{answer.answer}}</label>
+                </li>
+             </ul>
+             <textarea ng-if="question.type=='textarea'" ng-model="answer[question.$id]"></textarea>
+             <input type="text" ng-if="question.type=='text'" ng-model="answer[question.$id]" />
+             {{answer}}
+             <button ng-click="submit(question.$id)">Go!</button>
+          </li>
+        </ul>-->
+    </div>
   </body>
 </html>
