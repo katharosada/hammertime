@@ -24,7 +24,7 @@
               <button id="newquestion" class="btn btn-danger" ng-click="new_question()">New Question</button>
             </li>
             <li ng-repeat="question in questions | orderQuestionBy ">
-              <button class="btn questionbtn" ng-click="set_current_question(question.key)" ng-class="{'btn-primary':question.open, 'btn-info':!question.open, 'btn-success':answerComplete}">{{ question.question }}</button>
+              <button class="btn questionbtn" ng-click="set_current_question(question.key)" ng-class="{'btn-primary':question.open, 'btn-info':!question.open, 'btn-success':get_AnswersForQuestion(key)}">{{ question.question }}</button>
  
               <div ng-if="current_question !== null && question.key === current_question || question.open">
               Question: <input type="text" name="question" ng-model="question.question" size="15" maxlength="50" /></br>
