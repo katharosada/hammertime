@@ -43,7 +43,18 @@
         </div>
         <div class="col-md-6">
           <div ng-if="get_viewquestion()">
-              <h3>{{ questions[get_viewquestion()].question }}</h3>
+
+              <div ng-class="{'panel panel-warning': get_openquestion() !== null, 'panel panel-info':get_openquestion() === null}">
+                <div class="panel-heading">
+                  <h3 class="panel-title"> {{ question.open }} Question currently open:</h3>
+                </div>
+                <div class="panel-body">
+                  <h3>{{ questions[get_viewquestion()].question }}</h3>
+                </div>
+              </div>
+
+
+
               <label> Answered </label></br>
               <div class="progress">
                  <div class="progress-bar progress-bar-striped active" role="progressbar"
