@@ -3,7 +3,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     var ref = new Firebase("https://ygbcnjyw3s8.firebaseio-demo.com/");
     $scope.messages = $firebaseArray(ref);
     var students = new Firebase("https://flickering-fire-2155.firebaseio.com/students");
-    $scope.students = $firebaseArray(students);
+    $scope.students = $firebaseObject(students);
     var questions = new Firebase("https://flickering-fire-2155.firebaseio.com/questions");
     //$scope.questions = $firebaseArray(questions);
 
