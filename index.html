@@ -16,7 +16,7 @@
     }
     </style>
   </head>
-  <body ng-controller="MyController" class="student">
+  <body ng-controller="MyController" class="student" ng-class="{'open':isOpen}">
 
     <div class="container">
     	<h1>Heads up</h1>
@@ -26,12 +26,12 @@
             <button ng-click="nameMe()" class="btn btn-success">Start!</button>
         </div>
         <div class="questions" ng-show="student.id">
-            <ul id="example-messages" class="example-chat-messages">
-              <li ng-repeat="question in questions track by $index" ng-show="question.open && answers[question.$id].submitted!=true">
+            <ul id="question" class="example-chat-messages">
+              <li ng-repeat="question in questions track by $index" ng-show="question.open && answers[question.$id].submitted!=true" class="btn btn-warning">
                 <strong class="example-chat-username" ng-bind="question.question"></strong>
                  <textarea ng-if="question.type=='textarea'" ng-model="answers[question.$id]"></textarea>
                  <input type="text" ng-if="question.type=='text'" ng-model="answers[question.$id]" class="form-control" required />
-                 <button ng-click="submit(question.$id)" class="btn btn-success">Go!</button>
+                 <button ng-click="submit(question.$id)" class="btn btn-danger">Go!</button>
               </li>
             </ul>
             <!--View my answers
