@@ -13,6 +13,14 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       console.log(key);
     };
 
+
+
+    $scope.close_all_question = function() {
+      $scope.current_question = null;
+      console.log(key);
+    };
+
+
     $scope.open_question = function(key) {
       //var question = $scope.questions[key].update({'open': true});
       var question = new Firebase("https://flickering-fire-2155.firebaseio.com/questions/" + key);
@@ -21,6 +29,8 @@ myApp.controller("TeacherController", ["$scope", "$firebaseArray",
       console.log($scope.questions[key]);
       console.log('called');
     };
+
+
 
 
     $scope.close_question = function(key) {

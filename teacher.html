@@ -11,7 +11,6 @@
   </head>
   <body ng-controller="TeacherController">
     <h1> Welcome to Heads Up</h1>
-
     <div ng-if="current_question == null">
       <ul id="example-messages" class="example-chat-messages">
         <li ng-repeat="(key, question) in questions">
@@ -23,8 +22,10 @@
     <div ng-if="current_question != null && !questions[current_question].open">
       Question: <input type="text" name="question" value="{{ questions[current_question].question }}" size="15" maxlength="50" /></br>
       Answer: <input type="text" name="answer" value="{{ questions[current_question].correct_answer }}" size="15" maxlength="50" />
-      <button ng-click="open_question(current_question)" class="btn btn-primary">Open</button>
-    </div>
+      <button ng-click="open_question(current_question)" class="btn btn-primary">Open</button></br>
+      <button ng-click="close_all_question()" class="btn btn-primary">back to questions</button>    
+     </div>
+    
 
 
     <div ng-if="current_question != null && questions[current_question].open">
@@ -35,6 +36,8 @@
     </div>
 
 <!--
+    <INPUT TYPE="button" onClick="history.go(0)" VALUE="Refresh"> 
+
 <form action="http://www.fincher.org/SimpleFormActio" method="get" >
 <fieldset style="margin: 1em; text-align: center;">
 <legend>Select your question type</legend>
