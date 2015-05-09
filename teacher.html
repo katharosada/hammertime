@@ -22,7 +22,7 @@
           <ul id="questionlist">
             <li ng-repeat="(key, question) in questions">
 
-              <button class="btn questionbtn" ng-click="set_current_question(key)" ng-class="{'btn-success':question.open, 'btn-danger':!question.open}">{{ question.question }}</button>
+              <button class="btn questionbtn" ng-click="set_current_question(key)" ng-class="{'btn-primary':question.open, 'btn-info':!question.open, 'btn-success':answerComplete}">{{ question.question }}</button>
  
               <div ng-if="current_question !== null && key === current_question || question.open">
               Question: <input type="text" name="question" ng-model="question.question" size="15" maxlength="50" /></br>

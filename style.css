@@ -5,7 +5,9 @@ body {
 	  text-align: center;
 }
 input {
-	margin-bottom:20px;
+	  margin-bottom: 20px;
+  min-width: 300px;
+  margin-left: 10px;
 }
 li {
   list-style: none;
@@ -83,7 +85,7 @@ body.student {
 
 #questionlist li button + div {
   background-color: #eee;
-  padding: 20px 0px;
+  padding: 20px;
   border-radius: 0px 0px 5px 5px;
 }
 
