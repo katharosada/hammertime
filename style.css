@@ -109,6 +109,12 @@ h1 img {
   height: auto;
   margin-bottom: 40px;
 }
+.teacherPage h1 img {
+  width: 50%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 40px;
+}
 .student input {
   margin: 20px 0px;
 }
