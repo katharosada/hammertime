@@ -24,8 +24,8 @@
               <button class="btn questionbtn" ng-click="set_current_question(key)" ng-class="{'btn-success':question.open, 'btn-danger':!question.open}">{{ question.question }}</button>
  
               <div ng-if="current_question !== null && key === current_question || question.open">
-              Question: <input type="text" name="question" value="{{ question.question }}" size="15" maxlength="50" /></br>
-              Answer: <input type="text" name="answer" value="{{ question.correct_answer }}" size="15" maxlength="50" />
+              Question: <input type="text" name="question" ng-model="question.question" size="15" maxlength="50" /></br>
+              Answer: <input type="text" name="answer" ng-model="question.correct_answer" size="15" maxlength="50" />
                 <div ng-if="!question.open && get_openquestion() === null">
                   <button class="btn btn-success" ng-click="open_question(key)" class="btn btn-primary">
                     Open
@@ -43,13 +43,23 @@
         <div class="col-md-6">
           <div ng-if="current_question !== null">
             <!--Body content-->
+              <label> Correct Answers </label></br>
+              <div class="progress">
+                  <div class="progress-bar progress-bar-striped active" role="progressbar"
+                  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%">{{ get_CorrectAnswers() }} 
+                  </div>
+              </div>
+              <label> All Answers  </label></br>
+              <div class="progress">
+                 <div class="progress-bar progress-bar-striped active" role="progressbar"
+                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_AllAnswers()}}%">{{ get_AllAnswers() }} 
+                 </div>
+              </div>
             <ul ng-repeat="student in students">
               <li> {{ student.$value }} - {{ get_answer($index) }} </li>
             </ul>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar"
-                aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%">{{ get_CorrectAnswers() }} </div>
-                  </div>
+            
+
             </div>
           </div>
         </div>
