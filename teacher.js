@@ -11,10 +11,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
     $scope.questions2 = $firebaseObject(questions);
     $scope.questions2.$bindTo($scope, "questions");
 
-    $scope.current_question = null;
-
     $scope.set_current_question = function(key) {
-      console.log(key);
       if (key === $scope.current_question) {
         $scope.current_question = null;
         return;
@@ -33,7 +30,6 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
         "type": "text"
       });
       $scope.current_question = '' + max;
-      console.log(max);
     };
 
     $scope.close_all_question = function() {
@@ -60,7 +56,6 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
       for (var key in answers) {
         if (answers.hasOwnProperty(key) && answers[key] != null) {
           if (answers[key].student_id == student_id) {
-			  console.log(answers[key].answer);
             return answers[key].answer;
           }
         }
@@ -175,9 +170,7 @@ myApp.controller("TeacherController", ["$scope", "$firebaseObject", "$firebaseAr
    };
 
 
-
-
-
+  $scope.current_question = $scope.get_openquestion();
   }
 ]);
 

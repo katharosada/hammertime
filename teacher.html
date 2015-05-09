@@ -24,7 +24,7 @@
               <button id="newquestion" class="btn btn-primary" ng-click="new_question()">New Question</button>
             </li>
             <li ng-repeat="question in questions | orderQuestionBy ">
-              <button class="btn questionbtn" ng-click="set_current_question(question.key)" ng-class="{'btn-danger':question.open, 'btn-info':!question.open}">{{ question.question }}</button>
+              <button class="btn questionbtn" ng-click="set_current_question(question.key)" ng-class="{'btn-success':question.open, 'btn-info':!question.open}">{{ question.question }}</button>
  
               <div ng-if="current_question !== null && question.key === current_question || question.open" class="questionHolder">
               <label for="question">Question:</label> <input type="text" name="question" ng-model="question.question" size="15" maxlength="50" /></br>
@@ -35,7 +35,7 @@
                   </button>
                 </div>
                 <div ng-if="question.open">
-                  <button class="btn btn-danger" ng-click="close_question(question.key)" class="btn btn-primary">
+                  <button class="btn btn-success" ng-click="close_question(question.key)" class="btn btn-primary">
                     close
                   </button>
                 </div>
@@ -46,15 +46,13 @@
         <div class="col-md-6">
           <div ng-if="get_viewquestion()">
 
-              <div ng-class="{'panel panel-danger': get_openquestion() !== null, 'panel panel-warning':get_openquestion() === null}">
+              <div ng-class="{'panel panel-success': get_openquestion() !== null, 'panel panel-warning':get_openquestion() === null}">
                 <div class="panel-heading">
                   <h3 class="panel-title" ng-if="get_openquestion() !== null">Question currently open:</h3>
                   <h3 class="panel-title" ng-if="get_openquestion() === null">Question stats:</h3>
                 </div>
                 <div class="panel-body">
                   <h3>{{ questions[get_viewquestion()].question }}</h3>
-                </div>
-              </div>
 
 
 
@@ -70,12 +68,14 @@
                   aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{get_CorrectAnswers()}}%" ng-class="{'progress-bar-danger':get_CorrectAnswers()<50, 'progress-bar-success':get_CorrectAnswers()>50}">{{ get_CorrectAnswers() }}%
                   </div>
               </div>
-              <ul>
+              <ul id="student-list">
                 <li ng-repeat="(key, value) in students" ng-class="{'responded':get_answer(key)!= 'No answer','wrongAnswer':((questions[get_viewquestion()].correct_answer != get_answer(key)) && (get_answer(key) != 'No answer')) && questions[get_viewquestion()].correct_answer != ''}">
                   {{ value }} - {{ get_answer(key) }}
                   
                 </li>
               </ul>
+                </div>  <!-- close orange / green box on right hand side -->
+              </div>
             </div>
           </div>
         </div>
