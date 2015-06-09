@@ -1,13 +1,12 @@
-# hammertime
+# Heads up User Guide
 A live collaborative webapp for classroom participation
 
-*Heads up User Guide*
-
-*Students:*
-	1. Point your browser to http://headsup.bitballoon.com/
-	2. Type in your name. 
-	3. Wait for a question to appear on your screen. Your teacher will instruct you. 
-
+Students: <br>
+<ol>
+<li>Point your browser to http://headsup.bitballoon.com/</li>
+<li>Type in your name. </li>
+<li>Wait for a question to appear on your screen. Your teacher will instruct you. </li>
+</ol>
 *Teachers:*
 	1. Point your browser to http://headsup.bitballoon.com/teacher.html. This is your hub of information. From here you can choose what question to ask your entire class, see who has answered, and oversee the class stats for each question.
 
