@@ -36,7 +36,7 @@ Enter a question and answer into the text boxes. If you wish to ask an open-ende
 <li> Replace "flickering-fire-2155" with [YOUR APP NAME] in lines 3, 6, 7, 25, 42 and 49 of teacher.js.
 </li></ol></li>
 <li> Upload the files on to a server that your students can access.<br>
-Note: If you don't have access to a server, once you have finished updating all the files, you could deliver just the following files to your students. The files can be run on their local machines without a server. <br>
+*Note: If you don't have access to a server, once you have finished updating all the files, you could deliver just the following files to your students.* The files can be run on their local machines without a server. <br>
 		index.html<br>
 		bootstrap.min.css<br>
 		app.js<br>
@@ -45,8 +45,8 @@ Note: If you don't have access to a server, once you have finished updating all 
 </li></ol>
 <h2>Frequently Asked Questions:</h2>
 
-Q: Why is the code so... hack-y? 
+Q: Why is the code so... hack-y? <br>
 A: This project was completed for the 2015 Sydney SheHacks competition. Over the course of 24 hours, we designed, coded and presented this project to our peers. 
 
 <h2>Upcoming features:</h2>
-	- Password protected Teacher Portal.
+Password protected Teacher Portal.
